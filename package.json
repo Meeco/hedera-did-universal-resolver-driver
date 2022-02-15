@@ -8,8 +8,8 @@
     "start": "node src/server.js",
     "test": "jest",
     "getVersion": "echo \"console.log(require('./package.json').version)\" | node",
-    "build": "docker build -t meeco/uni-resolver-driver-did-hedera:latest -t meeco/uni-resolver-driver-did-hedera:$(yarn -s getVersion) .",
-    "push": "docker push meeco/uni-resolver-driver-did-hedera:latest && docker push meeco/uni-resolver-driver-did-hedera:$(yarn -s getVersion)",
+    "build": "docker build -t meeco/uni-resolver-driver-did-hedera:latest -t meeco/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g') .",
+    "push": "docker push meeco/uni-resolver-driver-did-hedera:latest && docker push meeco/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g')",
     "release": "semantic-release --debug"
   },
   "repository": {
@@ -20,7 +20,7 @@
   "dependencies": {
     "did-resolver": "3.1.5",
     "express": "4.17.2",
-    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#6c09baaca2540756642f893654cc74900472f471"
+    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#c4e4f8685a31bcbf1f800691361f4662ed58612a"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",

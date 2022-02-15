@@ -183,7 +183,7 @@ describe("did:ethr driver", () => {
       });
     });
 
-    it("bad address generic ethr DID", async () => {
+    it("bad address generic DID", async () => {
       expect.assertions(2);
       const did =
         "did:unknown:testnet:z6MkoDQtZUaT4vD314TcG5u91G46PoANQ8juFvuR2MnrfCqA_0.0.29677421";

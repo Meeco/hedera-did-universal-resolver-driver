@@ -5,9 +5,9 @@ USER root
 
 # add source files
 RUN mkdir "hedera-did-driver"
-ADD LICENSE package.json yarn.lock README.md hedera-did-driver/
+ADD LICENSE package.json README.md hedera-did-driver/
 ADD src/ hedera-did-driver/src/
-RUN cd hedera-did-driver && yarn install --prod --frozen-lockfile
+RUN cd hedera-did-driver && npm install
 
 EXPOSE 8081
 
