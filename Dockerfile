@@ -1,14 +1,28 @@
-FROM node:17.5.0
-LABEL repository="git@github.com:Meeco/hedera-did-driver.git"
+# -- build for production
 
-USER root
+FROM node:17-alpine as builder
 
-# add source files
-RUN mkdir "hedera-did-driver"
-ADD LICENSE package.json README.md hedera-did-driver/
-ADD src/ hedera-did-driver/src/
-RUN cd hedera-did-driver && npm install
+ENV NODE_ENV build
+
+WORKDIR /home/node
+
+COPY . /home/node
+
+RUN npm ci \
+    && npm prune --production
+
+# --- production
+
+FROM node:17-alpine as production
+
+ENV NODE_ENV production
+
+WORKDIR /home/node
+
+COPY --from=builder /home/node/package*.json /home/node/
+COPY --from=builder /home/node/node_modules/ /home/node/node_modules/
+COPY --from=builder /home/node/src/ /home/node/src/
 
 EXPOSE 8081
 
-ENTRYPOINT ["node", "/hedera-did-driver/src/server.js"]
+CMD ["npm", "run", "start"]

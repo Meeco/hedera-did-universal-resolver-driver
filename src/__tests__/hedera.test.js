@@ -1,7 +1,7 @@
 var app = require("../app");
 var request = require("supertest");
 
-describe("did:ethr driver", () => {
+describe("did:hedera driver", () => {
   it("responds with didResolutionResult", async () => {
     expect.assertions(4);
     const did =
