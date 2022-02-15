@@ -1,0 +1,43 @@
+{
+  "name": "hedera-did-driver",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "hedera DID method driver",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest",
+    "getVersion": "echo \"console.log(require('./package.json').version)\" | node",
+    "build": "docker build -t meeco/uni-resolver-driver-did-hedera:latest -t meeco/uni-resolver-driver-did-hedera:$(yarn -s getVersion) .",
+    "push": "docker push meeco/uni-resolver-driver-did-hedera:latest && docker push meeco/uni-resolver-driver-did-hedera:$(yarn -s getVersion)",
+    "release": "semantic-release --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Meeco/hedera-did-driver.git"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "did-resolver": "3.1.5",
+    "express": "4.17.2",
+    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#6c09baaca2540756642f893654cc74900472f471"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "6.0.1",
+    "@semantic-release/commit-analyzer": "9.0.2",
+    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "8.0.2",
+    "@semantic-release/npm": "9.0.0",
+    "@semantic-release/release-notes-generator": "10.0.3",
+    "jest": "27.4.7",
+    "semantic-release": "19.0.2",
+    "supertest": "6.2.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
