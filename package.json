@@ -8,8 +8,8 @@
     "start": "node src/server.js",
     "test": "jest",
     "getVersion": "echo \"console.log(require('./package.json').version)\" | node",
-    "build": "docker build -t meecosystem/uni-resolver-driver-did-hedera:latest -t meecosystem/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g') .",
-    "push": "docker push meecosystem/uni-resolver-driver-did-hedera:latest && docker push meecosystem/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g')",
+    "build": "docker build -t meeco/uni-resolver-driver-did-hedera:latest -t meeco/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g') .",
+    "push": "docker push meeco/uni-resolver-driver-did-hedera:latest && docker push meeco/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g')",
     "release": "semantic-release --debug"
   },
   "repository": {
