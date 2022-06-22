@@ -1,5 +1,6 @@
 const { HederaDidResolver } = require("@hashgraph/did-sdk-js");
 const { Resolver } = require("did-resolver");
+const cors = require("cors");
 
 const express = require("express");
 const app = express();
@@ -7,6 +8,8 @@ const app = express();
 const resolver = new Resolver({
   ...new HederaDidResolver().build(),
 });
+
+app.use(cors());
 
 app.get("/1.0/identifiers/*", async function (req, res) {
   const url = req.url;

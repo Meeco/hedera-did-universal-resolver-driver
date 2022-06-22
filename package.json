@@ -18,9 +18,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#c4e4f8685a31bcbf1f800691361f4662ed58612a",
+    "cors": "^2.8.5",
     "did-resolver": "3.1.5",
-    "express": "4.17.2",
-    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#c4e4f8685a31bcbf1f800691361f4662ed58612a"
+    "express": "4.17.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
