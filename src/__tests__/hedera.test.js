@@ -4,8 +4,7 @@ var request = require('supertest');
 describe('did:hedera driver', () => {
   it('responds with didResolutionResult', async () => {
     expect.assertions(4);
-    const did =
-      'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
+    const did = 'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
     const response = await request(app).get(`/1.0/identifiers/${did}`);
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('didDocument');
@@ -18,8 +17,7 @@ describe('did:hedera driver', () => {
   describe('responds with known did doc for ', () => {
     it('did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548', async () => {
       expect.assertions(2);
-      const did =
-        'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
+      const did = 'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
       const response = await request(app).get(`/1.0/identifiers/${did}`);
       expect(response.status).toBe(200);
       expect(response.body).toEqual({
@@ -60,8 +58,7 @@ describe('did:hedera driver', () => {
 
     it('did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424550', async () => {
       expect.assertions(2);
-      const did =
-        'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424550';
+      const did = 'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424550';
       const response = await request(app).get(`/1.0/identifiers/${did}`);
       expect(response.status).toBe(200);
       expect(response.body).toEqual({
@@ -97,8 +94,7 @@ describe('did:hedera driver', () => {
   describe('responds with didResolutionResult for', () => {
     it(' did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424549', async () => {
       expect.assertions(1);
-      const did =
-        'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424549';
+      const did = 'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424549';
       const response = await request(app).get(`/1.0/identifiers/${did}`);
       expect(response.body.didDocument).toHaveProperty('verificationMethod');
     });
@@ -107,8 +103,7 @@ describe('did:hedera driver', () => {
   describe('responds with error for', () => {
     //TODO: fix this test
     it('unknown hedera network', async () => {
-      const did =
-        'did:hedera:unknown:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
+      const did = 'did:hedera:unknown:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
       const response = await request(app).get(`/1.0/identifiers/${did}`);
       expect(response.status).toBe(500);
       // expect(response.body.didResolutionMetadata).toEqual({
@@ -117,21 +112,17 @@ describe('did:hedera driver', () => {
     });
 
     it('missing topic id from did', async () => {
-      const did =
-        'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr';
+      const did = 'did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr';
       const response = await request(app).get(`/1.0/identifiers/${did}`);
       expect(response.status).toBe(200);
       expect(response.body.didResolutionMetadata).toEqual({
         error: 'invalidDid',
-        message: expect.stringContaining(
-          'Error: DID string is invalid: topic ID is missing'
-        ),
+        message: expect.stringContaining('Error: DID string is invalid: topic ID is missing'),
       });
     });
 
     it('bad address generic DID', async () => {
-      const did =
-        'did:unknown:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
+      const did = 'did:unknown:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424548';
       const response = await request(app).get(`/1.0/identifiers/${did}`);
       expect(response.status).toBe(200);
       expect(response.body.didResolutionMetadata).toEqual({
