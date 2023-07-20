@@ -8,11 +8,12 @@ The file `src/server.js` is an small Express Node app acting as a thin wrapper a
 
 The following DID methods are supported:
 
-* [hedera](https://github.com/hashgraph/did-method/blob/master/did-method-specification.md)
+- [hedera](https://github.com/hashgraph/did-method/blob/master/did-method-specification.md)
 
 ## Curl Tests
 
-Run service with 
+Run service with
+
 ```
 npm start
 ```
@@ -20,11 +21,9 @@ npm start
 then run queries
 
 ```
-curl -X GET http://localhost:8081/1.0/identifiers/did:hedera:testnet:z6MkvD6JAfMyP6pgQoYxfE9rubgwLD9Hmz8rQh1FAxvbW8XB_0.0.29656526
+curl -X GET http://localhost:8081/1.0/identifiers/did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424549
 ```
 
-## Example DIDs
+## Example DID
 
-* `did:hedera:testnet:z6MkvD6JAfMyP6pgQoYxfE9rubgwLD9Hmz8rQh1FAxvbW8XB_0.0.29656526`
-* `did:hedera:testnet:z6MkgUv5CvjRP6AsvEYqSRN7djB6p4zK9bcMQ93g5yK6Td7N_0.0.29613327`
-
+- `did:hedera:testnet:z5P1atRTktJL8Ap7saabU4pHEaT96ZBFHQU5qeYjxYLqr_0.0.15424549`

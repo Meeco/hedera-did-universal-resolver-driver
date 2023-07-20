@@ -10,7 +10,8 @@
     "getVersion": "echo \"console.log(require('./package.json').version)\" | node",
     "build": "docker build -t meeco/uni-resolver-driver-did-hedera:latest -t meeco/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g') .",
     "push": "docker push meeco/uni-resolver-driver-did-hedera:latest && docker push meeco/uni-resolver-driver-did-hedera:$(npm pkg get version | sed 's/\"//g')",
-    "release": "semantic-release --debug"
+    "release": "semantic-release --debug",
+    "format": "prettier --write \"src/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "did-resolver": "3.1.5",
-    "express": "4.17.2",
-    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#c4e4f8685a31bcbf1f800691361f4662ed58612a"
+    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#b971b8292efbfe17947de6829423a11fdbe3db00",
+    "cors": "^2.8.5",
+    "did-resolver": "4.1.0",
+    "express": "4.17.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
@@ -31,6 +33,7 @@
     "@semantic-release/npm": "9.0.0",
     "@semantic-release/release-notes-generator": "10.0.3",
     "jest": "27.4.7",
+    "prettier": "^3.0.0",
     "semantic-release": "19.0.2",
     "supertest": "6.2.2"
   },

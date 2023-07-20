@@ -1,20 +1,23 @@
-const { HederaDidResolver } = require("@hashgraph/did-sdk-js");
-const { Resolver } = require("did-resolver");
+const { HederaDidResolver } = require('@hashgraph/did-sdk-js');
+const { Resolver } = require('did-resolver');
+const cors = require('cors');
 
-const express = require("express");
+const express = require('express');
 const app = express();
 
 const resolver = new Resolver({
   ...new HederaDidResolver().build(),
 });
 
-app.get("/1.0/identifiers/*", async function (req, res) {
+app.use(cors());
+
+app.get('/1.0/identifiers/*', async function (req, res) {
   const url = req.url;
   const regex = /\/1.0\/identifiers\/(did:.*)/;
   const matches = regex.exec(url);
   const did = matches ? matches[1] : null;
 
-  console.log("Resolving DID: " + did);
+  console.log('Resolving DID: ' + did);
 
   resolver
     .resolve(did)
