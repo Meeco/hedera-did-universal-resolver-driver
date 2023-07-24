@@ -28,7 +28,6 @@ app.get('/1.0/identifiers/*', async function (req, res) {
       if (err.message.match(/(DID string is invalid)/)) {
         res.status(400).send(err.message);
       } else {
-        console.error(err);
         res.status(500).send(err.message);
       }
     });
