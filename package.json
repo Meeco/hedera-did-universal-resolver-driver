@@ -19,7 +19,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@hashgraph/did-sdk-js": "github:Meeco/did-sdk-js#43d69103dd5f133519593abaea7dcaf948d9ce35",
+    "@hashgraph/did-sdk-js": "github:Meeco/hedera-did-sdk-js#43d69103dd5f133519593abaea7dcaf948d9ce35",
     "cors": "^2.8.5",
     "did-resolver": "4.1.0",
     "express": "4.17.2"
